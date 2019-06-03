@@ -10,21 +10,34 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static ImageView nameimg;
+    public static ImageView nameimg;
 
-    String[] namepics = {"english","hindi"};
+    String[] namepics = {"english","hindi","arabic","brazilian","chinese","dutch","french","italian"};
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button changebutton = (Button) findViewById(R.id.button2);
+        final Button changebutton = findViewById(R.id.button2);
         changebutton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                changeimg();
+            public void onClick(View view)
+            {
+                int n = x.nextInt(7);
+                nameimg = findViewById(R.id.imageView2);
+
+               int id = getResources().getIdentifier("com.example.cs541_helloworld_android:drawable/" + namepics[n], null, null);
+
+
+                nameimg.setImageResource(id);
+
+
+                System.out.println((n));
+
             }
         });
-
     }
 
 
@@ -32,21 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     public void changeimg()
     {
 
-        int n = x.nextInt(2);
-        nameimg = (ImageView) findViewById(R.id.image);
-
-        int id = getResources().getIdentifier("com.example.cs541_helloworld_android:drawable/" + namepics[n], null, null);
-
-
-        nameimg.setImageResource(id);
-
-
-        System.out.println((n));
 
 
 

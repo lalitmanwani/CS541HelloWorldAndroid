@@ -41,6 +41,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:onClick="OnClick"
         android:text="@string/change_location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

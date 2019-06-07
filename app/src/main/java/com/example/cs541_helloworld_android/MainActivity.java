@@ -5,15 +5,19 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements  AdapterView.OnItemSelectedListener{
 
     public static ImageView nameimg;
 
@@ -39,6 +43,21 @@ public class MainActivity extends AppCompatActivity{
         acelVal = SensorManager.GRAVITY_EARTH;
         acelLast = SensorManager.GRAVITY_EARTH;
         Shake = 0.00f;
+
+
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.spinnernames,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+
+
+
+
+
+
+
+
 
     }
 
@@ -92,15 +111,48 @@ public class MainActivity extends AppCompatActivity{
 
         nameimg.setImageResource(id);
 
+        String soundname = namepics[n];
+
+        int resID=getResources().getIdentifier(soundname, "raw",    this.getPackageName());
+
+        MediaPlayer sound = MediaPlayer.create(getApplicationContext(),resID);
+
+
+        sound.start();
+
 
 
 
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String language = parent.getItemAtPosition(position).toString();
+
+
+        nameimg = findViewById(R.id.imageView2);
+
+        int languageid = getResources().getIdentifier("com.example.cs541_helloworld_android:drawable/" + language, null, null);
+
+
+        nameimg.setImageResource(languageid);
 
 
 
+        int resID=getResources().getIdentifier(language, "raw",    this.getPackageName());
+
+        MediaPlayer sound = MediaPlayer.create(getApplicationContext(),resID);
 
 
+        sound.start();
+
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

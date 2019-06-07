@@ -2,5 +2,22 @@
     <string name="app_name">CS541-HelloWorld-Android</string>
     <string name="world_image">world_image</string>
     <string name="nameimage">nameimage</string>
-    <string name="change_location">Change Location</string>
+    <string name="change_location">Shuffle Language</string>
+    <string name="label">OR Choose One</string>
+    <string name="or_choose_one">OR Choose One</string>
+
+    <string-array name="spinnernames">
+        <item>english</item>
+        <item>hindi</item>
+        <item>arabic</item>
+        <item>brazilian</item>
+        <item>chinese</item>
+        <item>dutch</item>
+        <item>french</item>
+        <item>italian</item>
+        <item>japanese</item>
+        <item>korean</item>
+
+
+    </string-array>
 </resources>
